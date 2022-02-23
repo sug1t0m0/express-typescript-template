@@ -1,0 +1,8 @@
+version: '3'
+services:
+  mysql:
+    image: "mariadb:latest"
+    ports:
+      - "${DB_PORT}:3306"
+      
+

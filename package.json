@@ -5,8 +5,9 @@
   "scripts": {
     "start": "DEBUG=express-typescript-template:* npx ts-node ./bin/www",
     "check-types": "tsc --noEmit",
-    "eslint": "eslint *.ts",
-    "format": "prettier --write '*.{js,ts,json}'",
+    "eslint": "eslint src/**/*.ts",
+    "format": "prettier --check 'src/**/*.{js,ts,json}'",
+    "format:fix": "prettier --write 'src/**/*.{js,ts,json}'",
     "lint": "npm-run-all eslint check-types",
     "lint:fix": "npm-run-all eslint:fix check-types format"
   },

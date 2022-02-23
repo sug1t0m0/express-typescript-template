@@ -2,5 +2,8 @@
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
   "files.autoSave": "afterDelay",
-  "eslint.lintTask.enable": true
+  "eslint.lintTask.enable": true,
+  "editor.formatOnSave": true,
+  "prettier.configPath": ".prettierrc",
+  "prettier.enableDebugLogs": true
 }

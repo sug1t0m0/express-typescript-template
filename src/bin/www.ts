@@ -7,7 +7,10 @@ import debugModule from 'debug';
 import http from 'http';
 
 import app from '../app';
-import {} from 'express';
+
+import { createConnection } from 'typeorm';
+
+import { User } from '../entity/User';
 
 // TODO appName を使う
 const debug = debugModule('express-typescript-template:server');
@@ -17,7 +20,29 @@ const debug = debugModule('express-typescript-template:server');
  */
 
 const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+
+createConnection()
+  .then(async (connection) => {
+    app.set('port', port);
+
+    await connection.manager.save(
+      connection.manager.create(User, {
+        firstName: 'Timber',
+        lastName: 'Saw',
+        age: 27,
+      })
+    );
+    await connection.manager.save(
+      connection.manager.create(User, {
+        firstName: 'Phantom',
+        lastName: 'Assassin',
+        age: 24,
+      })
+    );
+
+    console.log('Express server has started on port 3000. Open http://localhost:3000/users to see results');
+  })
+  .catch((error) => console.log(error));
 
 /**
  * Create HTTP server.
